@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float checkRadius;
     public int maxJumpCount;
     public float sprintSpeed;
+    public Animator animator;
 
     private Rigidbody2D rb;
     private bool facingRight = true;
@@ -97,10 +98,19 @@ public class PlayerMovement : MonoBehaviour
         if(!isSprinting)
         {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+            if(rb.velocity.x == 0)
+            {
+                animator.SetFloat("Speed", 0);
+            }
+            else if(rb.velocity.x != 0)
+            {
+                animator.SetFloat("Speed", 1);
+            }
         }
         else if(isSprinting)
         {
             rb.velocity = new Vector2(moveDirection.x * sprintSpeed, rb.velocity.y);
+            animator.SetFloat("Speed", 2);
         }
 
         if(isJumping)
