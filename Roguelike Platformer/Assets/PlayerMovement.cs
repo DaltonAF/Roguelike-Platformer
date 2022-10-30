@@ -113,7 +113,14 @@ public class PlayerMovement : MonoBehaviour
         else if(isSprinting)
         {
             rb.velocity = new Vector2(moveDirection.x * sprintSpeed, rb.velocity.y);
-            animator.SetFloat("Speed", 2);
+            if(rb.velocity.x == 0)
+            {
+                animator.SetFloat("Speed", 0);
+            }
+            else if(rb.velocity.x != 0)
+            {
+                animator.SetFloat("Speed", 2);
+            }
         }
 
         if(isJumping)
