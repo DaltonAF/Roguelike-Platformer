@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     public float checkRadius;
     public int maxJumpCount;
     public float sprintSpeed;
-    public Animator animator;
 
     private Rigidbody2D rb;
     private bool facingRight = true;
@@ -23,12 +22,16 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount;
     private bool isSprinting;
 
+    // Player Movement
     public PlayerInput playerControls;
 
     Vector2 moveDirection = Vector2.zero;
 
     private InputAction move;
     private InputAction fire;
+
+    // Player Animations
+    public Animator animator;
 
 
 
