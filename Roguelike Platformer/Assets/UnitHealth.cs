@@ -5,8 +5,6 @@ using UnityEngine;
 public class UnitHealth : MonoBehaviour
 {
 
-    public PlayerMovement variable;
-
     // Start is called before the first frame update
     void Start()
     {
