@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Roguelike Platformer/Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF - Sunny Days.mat.meta
 guid: 6522f30e342599e4e9dd4cc2cc03c830
-========
-guid: a2cc2982d08e0f145b6cd2f896656255
->>>>>>>> parent of b710f12 (Revert "Im dumb"):Roguelike Platformer/Assets/Animation/PlayerAnimation.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
