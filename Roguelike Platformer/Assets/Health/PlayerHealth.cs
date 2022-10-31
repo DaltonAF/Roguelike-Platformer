@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -16,11 +18,14 @@ public class PlayerHealth : MonoBehaviour
     [Header ("Health Scripts")]
     public HealthBar healthbar;
 
+    public TextMeshProUGUI hitPointsText;
+
     void Start()
     {
         currentPlayerHealth = maxPlayerHealth;
         healthbar.SetMaxHealth(maxPlayerHealth);
         spriteRend = GetComponent<SpriteRenderer>();
+        hitPointsText.text = currentPlayerHealth.ToString();
     }
 
     void Update()
@@ -46,12 +51,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currentPlayerHealth -= damage;
         healthbar.SetHealth(currentPlayerHealth);
+        hitPointsText.text = currentPlayerHealth.ToString();
         StartCoroutine(Invulnerability());
     }
 
     public void HealDamage(int damage)
     {
         currentPlayerHealth += damage;
+        hitPointsText.text = currentPlayerHealth.ToString();
         healthbar.SetHealth(currentPlayerHealth);
     }
 
@@ -60,10 +67,12 @@ public class PlayerHealth : MonoBehaviour
         if (currentPlayerHealth > maxPlayerHealth)
         {
             currentPlayerHealth = maxPlayerHealth;
+            hitPointsText.text = currentPlayerHealth.ToString();
         }
         else if (currentPlayerHealth < 0)
         {
             currentPlayerHealth = 0;
+            hitPointsText.text = currentPlayerHealth.ToString();
         }
     }
 
