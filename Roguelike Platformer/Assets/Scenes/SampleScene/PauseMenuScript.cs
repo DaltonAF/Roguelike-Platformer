@@ -35,7 +35,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         PauseMenu.SetActive(true);
 
-        Time.timeScale = 0f;
+        Time.timeScale = 0f * Time.deltaTime;
 
         isPaused = true;
     }
@@ -52,7 +52,7 @@ public class PauseMenuScript : MonoBehaviour
     public void goToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuScene");
     }
     
     public void QuitGame()
