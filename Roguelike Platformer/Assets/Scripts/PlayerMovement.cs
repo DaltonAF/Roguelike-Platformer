@@ -5,15 +5,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [Header("Movement")]
     public float moveSpeed;
+    public float sprintSpeed;
     public float jumpForce;
+    public int maxJumpCount;
+
+    [Header("Misc")]
     public Transform ceilingCheck;
     public Transform groundCheck;
     public LayerMask groundObjects;
     public float checkRadius;
-    public int maxJumpCount;
-    public float sprintSpeed;
+
+
 
     private Rigidbody2D rb;
     private bool facingRight = true;
@@ -31,12 +35,15 @@ public class PlayerMovement : MonoBehaviour
     private InputAction move;
     private InputAction fire;
 
+    [Header("Scripts")]
     // Player Animations
     public Animator animator;
 
     //Health Scripts
     public PlayerHealth playerhealth;
-    public UnitHealth unithealth;
+
+    //Player Collision Script
+    public PlayerCollision playercollision;
 
 
 
@@ -92,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
                 TakeFallDamage(); //take fall damage
             }
         }
-        
     }
 
     private void ProcessInputs()
@@ -190,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void TakeFallDamage()
     {
-        unithealth.TakeDamage(5);
+        playerhealth.TakeDamage(5);
         maxYvelocity = 0; //reset maximum y velocity for next jump
     }
 }

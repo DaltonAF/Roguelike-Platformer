@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-
+    [Header ("Health")]
     public int maxPlayerHealth;
     public int currentPlayerHealth;
 
+    [Header("iFrames")]
+    [SerializeField] private float iFramesDuration;
+    [SerializeField] private int numberOfFlashes;
+    private SpriteRenderer spriteRend;
+
+    [Header ("Health Scripts")]
     public HealthBar healthbar;
 
-    public UnitHealth unithealth;
-
-    // Start is called before the first frame update
     void Start()
     {
         currentPlayerHealth = maxPlayerHealth;
         healthbar.SetMaxHealth(maxPlayerHealth);
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            unithealth.TakeDamage(20);
-            unithealth.playerHealthLimits();
+            TakeDamage(20);
+            playerHealthLimits();
             Debug.Log(currentPlayerHealth);
         }
 
@@ -33,9 +36,50 @@ public class PlayerHealth : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.H))
         {
-            unithealth.HealDamage(20);
-            unithealth.playerHealthLimits();
+            HealDamage(20);
+            playerHealthLimits();
             Debug.Log(currentPlayerHealth);
         }
     }
+
+        public void TakeDamage(int damage)
+    {
+        currentPlayerHealth -= damage;
+        healthbar.SetHealth(currentPlayerHealth);
+        StartCoroutine(Invulnerability());
+    }
+
+    public void HealDamage(int damage)
+    {
+        currentPlayerHealth += damage;
+        healthbar.SetHealth(currentPlayerHealth);
+    }
+
+    public void playerHealthLimits()
+    {
+        if (currentPlayerHealth > maxPlayerHealth)
+        {
+            currentPlayerHealth = maxPlayerHealth;
+        }
+        else if (currentPlayerHealth < 0)
+        {
+            currentPlayerHealth = 0;
+        }
+    }
+
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+
+        for(int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(1, 0.75f, 0.75f, 0.75f);
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+        }
+
+        Physics2D.IgnoreLayerCollision(10, 11, false);
+    }
 }
+
