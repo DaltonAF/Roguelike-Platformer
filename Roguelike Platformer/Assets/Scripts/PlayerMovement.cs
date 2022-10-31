@@ -15,14 +15,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform ceilingCheck;
     public Transform groundCheck;
     public LayerMask groundObjects;
-    public float checkRadius;
-
-
 
     private Rigidbody2D rb;
     private bool facingRight = true;
     private bool isJumping = false;
-    private bool isGrounded;
     private int jumpCount;
     private bool isSprinting;
     private float maxYvelocity;
@@ -45,11 +41,13 @@ public class PlayerMovement : MonoBehaviour
     //Player Collision Script
     public PlayerCollision playercollision;
 
+    public GroundCheck groundcheck;
+
 
 
     private void Start()
     {
-        jumpCount = maxJumpCount;
+        
     }
 
     // Awake is called after all objects are initialized. Called in a random order
@@ -57,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerControls = new PlayerInput();
+        jumpCount = maxJumpCount;
     }
 
     private void OnEnable()
@@ -90,8 +89,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //check if on ground
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
-        if(isGrounded)
+        if(IsGrounded())
         {
             jumpCount = maxJumpCount;
             if(maxYvelocity <= -9) //if maximum y velocity is above certain threshold
@@ -105,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = move.ReadValue<Vector2>();
 
-         if(Input.GetButtonDown("Jump") && jumpCount > 0)
+         if(Input.GetButtonDown("Jump") && jumpCount >= 1)
          {
             isJumping = true;
             maxYvelocity = 0;
@@ -140,12 +138,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        //jumping
         if(isJumping)
         {
+            groundcheck.isGrounded = false;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCount--;
         }
-
         isJumping = false;
 
         if(rb.velocity.y < maxYvelocity) //if negative vertical velocity is increasing
@@ -193,6 +192,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private bool IsGrounded()
+    {
+        return groundcheck.isGrounded;
+    }
 
     private void TakeFallDamage()
     {

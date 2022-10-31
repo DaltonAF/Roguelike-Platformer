@@ -11,6 +11,8 @@ public class PlayerCollision : MonoBehaviour
         if(col.gameObject.tag == "Enemy")
         {
             playerhealth.TakeDamage(5);
+            var enemy = col.gameObject.GetComponent<EnemyScript>();
+            enemy.Kill();
         }
     }
 }
