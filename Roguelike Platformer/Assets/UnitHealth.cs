@@ -6,18 +6,8 @@ public class UnitHealth : MonoBehaviour
 {
 
     public PlayerHealth playerhealth;
+    public PlayerMovement playermovement;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
     public void TakeDamage(int damage)
     {

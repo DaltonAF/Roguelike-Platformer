@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private int jumpCount;
     private bool isSprinting;
+    private float maxYvelocity;
 
     // Player Movement
     public PlayerInput playerControls;
@@ -32,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Player Animations
     public Animator animator;
+
+    //Health Scripts
+    public PlayerHealth playerhealth;
+    public UnitHealth unithealth;
 
 
 
@@ -64,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         ProcessInputs();
 
-        Animate();
+        AnimateFlip();
 
         SmallerJump();
 
@@ -75,14 +80,22 @@ public class PlayerMovement : MonoBehaviour
     //better for handling physics. can be called multiple times per update.
     private void FixedUpdate()
     {
+
+        Move();
+
         //check if on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
         if(isGrounded)
         {
             jumpCount = maxJumpCount;
+            if(maxYvelocity <= -9) //if maximum y velocity is above certain threshold
+            {
+                TakeFallDamage(); //take fall damage
+                maxYvelocity = 0; //reset maximum y velocity for next jump
+            }
         }
 
-        Move();
+        
     }
 
     private void ProcessInputs()
@@ -92,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
          if(Input.GetButtonDown("Jump") && jumpCount > 0)
          {
             isJumping = true;
+            maxYvelocity = 0;
          }
     }
 
@@ -130,9 +144,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         isJumping = false;
+
+        if(rb.velocity.y < maxYvelocity) //if negative vertical velocity is increasing
+        {
+            maxYvelocity = rb.velocity.y; //new greatest negative vertical velocity
+        }
+
     }
 
-    private void Animate()
+    private void AnimateFlip()
     {
         if (moveDirection.x > 0 && !facingRight)
         {
@@ -168,5 +188,15 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprinting = false;
         }
+    }
+
+    public void CheckFallSpeed()
+    {
+
+    }
+
+    private void TakeFallDamage()
+    {
+        unithealth.TakeDamage(5);
     }
 }

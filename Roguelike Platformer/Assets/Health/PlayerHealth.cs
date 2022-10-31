@@ -29,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log(currentPlayerHealth);
         }
 
+        
+
         if(Input.GetKeyDown(KeyCode.H))
         {
             unithealth.HealDamage(20);
