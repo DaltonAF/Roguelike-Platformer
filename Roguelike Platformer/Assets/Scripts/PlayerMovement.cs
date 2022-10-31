@@ -74,15 +74,14 @@ public class PlayerMovement : MonoBehaviour
         SmallerJump();
 
         checkSprint();
+
+        Move();
         
     }
 
     //better for handling physics. can be called multiple times per update.
     private void FixedUpdate()
     {
-
-        Move();
-
         //check if on ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
         if(isGrounded)
@@ -91,10 +90,8 @@ public class PlayerMovement : MonoBehaviour
             if(maxYvelocity <= -9) //if maximum y velocity is above certain threshold
             {
                 TakeFallDamage(); //take fall damage
-                maxYvelocity = 0; //reset maximum y velocity for next jump
             }
         }
-
         
     }
 
@@ -117,11 +114,11 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
             if(rb.velocity.x == 0)
             {
-                animator.SetFloat("Speed", 0);
+                animator.SetFloat("Speed", 0); //idle animation
             }
             else if(rb.velocity.x != 0)
             {
-                animator.SetFloat("Speed", 1);
+                animator.SetFloat("Speed", 1); //run animation
             }
         }
         else if(isSprinting)
@@ -129,11 +126,11 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(moveDirection.x * sprintSpeed, rb.velocity.y);
             if(rb.velocity.x == 0)
             {
-                animator.SetFloat("Speed", 0);
+                animator.SetFloat("Speed", 0); //idle animation
             }
             else if(rb.velocity.x != 0)
             {
-                animator.SetFloat("Speed", 2);
+                animator.SetFloat("Speed", 2); //sprinting animation
             }
         }
 
@@ -190,13 +187,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void CheckFallSpeed()
-    {
-
-    }
 
     private void TakeFallDamage()
     {
         unithealth.TakeDamage(5);
+        maxYvelocity = 0; //reset maximum y velocity for next jump
     }
 }
