@@ -13,13 +13,11 @@ public class EnemySpawn : MonoBehaviour
     public float spawnDelay;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
-    // Update is called once per frame
     void Update()
     {
             
@@ -30,4 +28,5 @@ public class EnemySpawn : MonoBehaviour
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
         Instantiate(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
     }
+
 }
