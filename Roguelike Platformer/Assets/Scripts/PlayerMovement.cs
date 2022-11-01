@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public int maxJumpCount;
 
-    [Header("Misc")]
+    [Header("Bounds Check")]
     public Transform ceilingCheck;
     public Transform groundCheck;
     public LayerMask groundObjects;

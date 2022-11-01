@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243761d85db19ec48a1504e82a004ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabObject: {fileID: 6421167175779559249, guid: e4f91ede8b050204b9472ad0429aa519, type: 3}
   spawnPoints:
   - {fileID: 196236101}
   - {fileID: 1903012297}
@@ -1045,6 +1046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhealth: {fileID: 398925717}
+  player: {fileID: 398925710}
+  enemy: {fileID: 6421167175779559249, guid: e4f91ede8b050204b9472ad0429aa519, type: 3}
 --- !u!114 &398925720
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class EnemySpawn : MonoBehaviour
 {
+
+    [SerializeField] GameObject prefabObject;
 
     public Transform[] spawnPoints;
     public GameObject enemy;
@@ -26,7 +29,11 @@ public class EnemySpawn : MonoBehaviour
     public void SpawnObject()
     {
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
+        //PrefabUtility.InstantiatePrefab(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
+        Selection.activeObject = PrefabUtility.InstantiatePrefab(prefabObject, transform);
+        var tempPrefab = Selection.activeGameObject;
+        tempPrefab.transform.position = spawnPoints[randSpawnPoint].position;
+        tempPrefab.transform.rotation = transform.rotation;
     }
 
 }
