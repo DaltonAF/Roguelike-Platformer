@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerHealth: 100
   currentPlayerHealth: 0
-  iFramesDuration: 0.75
+  iFramesDuration: 0.8
   numberOfFlashes: 2
   healthbar: {fileID: 302115077}
   hitPointsText: {fileID: 309586295}
