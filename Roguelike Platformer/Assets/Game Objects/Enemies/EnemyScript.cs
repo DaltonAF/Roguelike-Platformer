@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour
     public int maxHealth = 20;
     private int currentHealth;
 
-    private SpriteRenderer spriteRend;
+    public Animator animator;
 
     void Start()
     {
@@ -19,15 +19,23 @@ public class EnemyScript : MonoBehaviour
         currentHealth -= damage;
 
         //play hurt animation
+        animator.SetTrigger("Hurt");
 
         if(currentHealth <= 0)
         {
-            Kill();
+            Die();
         }
     }
 
-    public void Kill(){
+    public void Die(){
         //die animation
+        animator.SetBool("IsDead", true);
+       
+        FunctionTimer.Create(Kill, 1.2f);
+    }
+
+    public void Kill()
+    {
         Destroy(gameObject);
     }
 }
