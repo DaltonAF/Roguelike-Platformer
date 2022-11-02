@@ -982,9 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38691310fb1152408980af2ded6b675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  sprintSpeed: 5.1
-  jumpForce: 5.6
+  moveSpeed: 4
+  jumpForce: 6
   maxJumpCount: 1
   ceilingCheck: {fileID: 333835189}
   groundCheck: {fileID: 558642154}
@@ -1034,6 +1033,7 @@ MonoBehaviour:
   numberOfFlashes: 2
   healthbar: {fileID: 302115077}
   hitPointsText: {fileID: 309586295}
+  pausemenuscript: {fileID: 0}
 --- !u!114 &398925719
 MonoBehaviour:
   m_ObjectHideFlags: 0

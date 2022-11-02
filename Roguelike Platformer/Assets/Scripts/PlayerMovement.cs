@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    public float sprintSpeed;
     public float jumpForce;
     public int maxJumpCount;
 
@@ -20,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
     private bool isJumping = false;
     private int jumpCount;
-    private bool isSprinting;
     private float maxYvelocity;
 
     // Player Movement
@@ -81,8 +79,6 @@ public class PlayerMovement : MonoBehaviour
 
         SmallerJump();
 
-        checkSprint();
-
         Move();
         
     }
@@ -115,29 +111,15 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         //horizontal movement
-        if(!isSprinting)
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+        if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
         {
-            rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-            if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
-            {
-                animator.SetFloat("Speed", 0); //idle animation
-            }
-            else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
-            {
-                animator.SetFloat("Speed", 1); //run animation
-            }
+            animator.SetFloat("Speed", 0); //idle animation
         }
-        else if(isSprinting)
+
+        else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
         {
-            rb.velocity = new Vector2(moveDirection.x * sprintSpeed, rb.velocity.y);
-            if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
-            {
-                animator.SetFloat("Speed", 0); //idle animation
-            }
-            else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
-            {
-                animator.SetFloat("Speed", 2); //sprinting animation
-            }
+            animator.SetFloat("Speed", 1); //run animation
         }
 
         //jumping
@@ -182,18 +164,6 @@ public class PlayerMovement : MonoBehaviour
          if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-    }
-
-    private void checkSprint()
-    {
-        if(Input.GetButtonDown("Sprint"))
-        {
-            isSprinting = true;
-        }
-        if(Input.GetButtonUp("Sprint"))
-        {
-            isSprinting = false;
         }
     }
 
