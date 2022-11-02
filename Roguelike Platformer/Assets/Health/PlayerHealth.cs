@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthbar;
 
     public TextMeshProUGUI hitPointsText;
-
+    
     [Header ("Other Scripts")]
     public PauseMenuScript pausemenuscript;
 

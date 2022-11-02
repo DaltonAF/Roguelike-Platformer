@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GroundCheck groundcheck;
 
+    public PauseMenuScript pausemenuscript;
+
 
 
     private void Start()
@@ -116,11 +118,11 @@ public class PlayerMovement : MonoBehaviour
         if(!isSprinting)
         {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-            if(rb.velocity.x == 0)
+            if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
             {
                 animator.SetFloat("Speed", 0); //idle animation
             }
-            else if(rb.velocity.x != 0)
+            else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
             {
                 animator.SetFloat("Speed", 1); //run animation
             }
@@ -128,11 +130,11 @@ public class PlayerMovement : MonoBehaviour
         else if(isSprinting)
         {
             rb.velocity = new Vector2(moveDirection.x * sprintSpeed, rb.velocity.y);
-            if(rb.velocity.x == 0)
+            if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
             {
                 animator.SetFloat("Speed", 0); //idle animation
             }
-            else if(rb.velocity.x != 0)
+            else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
             {
                 animator.SetFloat("Speed", 2); //sprinting animation
             }
@@ -168,8 +170,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipCharacter()
     {
+        if(!pausemenuscript.isPaused)
+        {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     private void SmallerJump()
