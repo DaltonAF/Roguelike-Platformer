@@ -1033,6 +1033,7 @@ MonoBehaviour:
   numberOfFlashes: 2
   healthbar: {fileID: 302115077}
   hitPointsText: {fileID: 309586295}
+  pausemenuscript: {fileID: 2060887712}
 --- !u!114 &398925719
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class EnemySpawn : MonoBehaviour
     public void SpawnObject()
     {
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-        //PrefabUtility.InstantiatePrefab(enemy, spawnPoints[randSpawnPoint].position, transform.rotation);
+        
         Selection.activeObject = PrefabUtility.InstantiatePrefab(prefabObject, transform);
         var tempPrefab = Selection.activeGameObject;
         tempPrefab.transform.position = spawnPoints[randSpawnPoint].position;

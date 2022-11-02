@@ -20,6 +20,9 @@ public class PlayerHealth : MonoBehaviour
 
     public TextMeshProUGUI hitPointsText;
 
+    [Header ("Other Scripts")]
+    public PauseMenuScript pausemenuscript;
+
     void Start()
     {
         currentPlayerHealth = maxPlayerHealth;
@@ -52,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         currentPlayerHealth -= damage;
         healthbar.SetHealth(currentPlayerHealth);
         hitPointsText.text = currentPlayerHealth.ToString();
+        playerHealthLimits();
         StartCoroutine(Invulnerability());
     }
 
@@ -69,10 +73,11 @@ public class PlayerHealth : MonoBehaviour
             currentPlayerHealth = maxPlayerHealth;
             hitPointsText.text = currentPlayerHealth.ToString();
         }
-        else if (currentPlayerHealth < 0)
+        else if (currentPlayerHealth <= 0)
         {
             currentPlayerHealth = 0;
             hitPointsText.text = currentPlayerHealth.ToString();
+            pausemenuscript.pauseGame();
         }
     }
 
