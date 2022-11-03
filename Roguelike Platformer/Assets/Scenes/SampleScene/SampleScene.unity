@@ -1052,7 +1052,7 @@ MonoBehaviour:
   numberOfFlashes: 2
   healthbar: {fileID: 302115077}
   hitPointsText: {fileID: 309586295}
-  deathscenescript: {fileID: 0}
+  deathscenescript: {fileID: 1999286637}
 --- !u!114 &398925719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,8 +1838,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 64.53183, y: -18.911102}
-  m_SizeDelta: {x: 1101, y: 519}
+  m_AnchoredPosition: {x: 64.53193, y: -19.5843}
+  m_SizeDelta: {x: 1111.949, y: 558.6126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726497939
 MonoBehaviour:
@@ -1854,14 +1854,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 664c7ab55454af3418527cf1e44678ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 366650dbcfc6ddc4c8483e8b003f11b7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2328,7 +2328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5111,7 +5111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1888542597}
   isPaused: 0
-  Music: {fileID: 0}
+  Music: {fileID: 2060887713}
 --- !u!82 &2060887713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5124,13 +5124,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 131fcde5563b8594ea004c5f4b26bab8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 90
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

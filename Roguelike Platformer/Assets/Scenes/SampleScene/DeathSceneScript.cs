@@ -17,12 +17,11 @@ public class DeathSceneScript : MonoBehaviour
 
     void Update()
     {
-        if(playerhealth.currentPlayerHealth == 0)
+        if(playerhealth.currentPlayerHealth <= 0)
         {
             gameOver();
         }
     }
-
 
     public void gameOver()
     {
