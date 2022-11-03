@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     public int maxHealth = 20;
     private int currentHealth;
+    public bool isDead;
 
     public Animator animator;
 
@@ -36,6 +37,7 @@ public class EnemyScript : MonoBehaviour
 
     public void Kill()
     {
+        isDead = true;
         Destroy(gameObject);
     }
 }

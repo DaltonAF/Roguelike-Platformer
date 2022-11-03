@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     public TextMeshProUGUI hitPointsText;
     
     [Header ("Other Scripts")]
-    public PauseMenuScript pausemenuscript;
+    public DeathSceneScript deathscenescript;
 
     void Start()
     {
@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentPlayerHealth = 0;
             hitPointsText.text = currentPlayerHealth.ToString();
-            pausemenuscript.pauseGame();
+            deathscenescript.gameOver();
         }
     }
 

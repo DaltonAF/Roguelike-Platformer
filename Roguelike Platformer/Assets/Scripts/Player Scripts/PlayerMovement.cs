@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PauseMenuScript pausemenuscript;
 
+    public DeathSceneScript deathscenescript;
+
 
 
     private void Start()
@@ -112,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //horizontal movement
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
-        if(rb.velocity.x == 0 && !pausemenuscript.isPaused)
+        if(rb.velocity.x == 0 && !pausemenuscript.isPaused && !deathscenescript.isDead)
         {
             animator.SetFloat("Speed", 0); //idle animation
         }
@@ -152,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipCharacter()
     {
-        if(!pausemenuscript.isPaused)
+        if(!pausemenuscript.isPaused && !deathscenescript.isDead)
         {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);

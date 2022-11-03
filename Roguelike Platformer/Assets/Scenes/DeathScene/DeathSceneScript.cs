@@ -8,6 +8,7 @@ public class DeathSceneScript : MonoBehaviour
 
     public PlayerHealth playerhealth;
     public GameObject DeathScreen;
+    public bool isDead = false;
 
     void Start()
     {
@@ -27,13 +28,20 @@ public class DeathSceneScript : MonoBehaviour
     {
         DeathScreen.SetActive(true);
 
+        isDead = true;        
+
         Time.timeScale = 0f * Time.deltaTime;
     }
 
     public void goToMainMenu()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
+        isDead = false;
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
