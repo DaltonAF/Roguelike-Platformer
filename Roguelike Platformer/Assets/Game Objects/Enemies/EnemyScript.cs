@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour
         //die animation
         animator.SetBool("IsDead", true);
        
-        FunctionTimer.Create(Kill, 1.2f);
+        FunctionTimer.Create(Kill, 0.9f);
     }
 
     public void Kill()
