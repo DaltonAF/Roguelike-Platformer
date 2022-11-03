@@ -9,12 +9,11 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject PauseMenu;
     public bool isPaused = false;
 
-    public AudioSource Music;
+    public MusicPlayer musicplayer;
 
     void Start()
     {
         PauseMenu.SetActive(false);
-        Music = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -38,7 +37,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         PauseMenu.SetActive(true);
 
-        Music.volume = 0.12f;
+        musicplayer._AudioSource1.volume = 0.12f;
 
         Time.timeScale = 0f * Time.deltaTime;
 
@@ -49,7 +48,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         PauseMenu.SetActive(false);
 
-        Music.volume = 0.4f;
+        musicplayer._AudioSource1.volume = 0.4f;
 
         Time.timeScale = 1f;
 

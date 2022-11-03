@@ -10,6 +10,15 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public int maxJumpCount;
 
+    [Header("Dash")]
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower = 16f;
+    public float dashingTime = 0.12f;
+    public float dashingCooldown = 1f;
+    public int dashCount;
+    [SerializeField] private TrailRenderer tr;
+
     [Header("Bounds Check")]
     public Transform ceilingCheck;
     public Transform groundCheck;
@@ -40,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     public PlayerCollision playercollision;
 
     public GroundCheck groundcheck;
+
+    [Header("Scene/Menu Scripts")]
 
     public PauseMenuScript pausemenuscript;
 
@@ -74,6 +85,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isDashing)
+        {
+            return;
+        }
 
         ProcessInputs();
 
@@ -138,6 +154,11 @@ public class PlayerMovement : MonoBehaviour
             maxYvelocity = rb.velocity.y; //new greatest negative vertical velocity
         }
 
+        if(Input.GetButtonDown("Dash") && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
     }
 
     private void AnimateFlip()
@@ -178,5 +199,32 @@ public class PlayerMovement : MonoBehaviour
     {
         playerhealth.TakeDamage(5);
         maxYvelocity = 0; //reset maximum y velocity for next jump
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+        if (facingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        }
+        else if (!facingRight)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
+        }
+        tr.emitting = true;
+
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
