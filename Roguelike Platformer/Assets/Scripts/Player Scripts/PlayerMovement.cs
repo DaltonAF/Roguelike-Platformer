@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int maxJumpCount;
 
     [Header("Dash")]
-    private bool canDash = true;
+    public bool canDash = true;
     private bool isDashing;
     public float dashingPower = 16f;
     public float dashingTime = 0.12f;
@@ -205,6 +205,9 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+
+        maxYvelocity = 0;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
@@ -217,12 +220,15 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
         }
         tr.emitting = true;
+        animator.SetBool("IsDashing", true);
 
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
 
         rb.gravityScale = originalGravity;
         isDashing = false;
+        Physics2D.IgnoreLayerCollision(10, 11, false);
+        animator.SetBool("IsDashing", false);
         
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
