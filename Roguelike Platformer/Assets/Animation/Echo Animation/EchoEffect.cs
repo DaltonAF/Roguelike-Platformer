@@ -23,7 +23,7 @@ public class EchoEffect : MonoBehaviour
             if(timeBetweenSpawns <= 0)
             {
                 instance = Instantiate(echo, transform.position, this.transform.rotation);
-                Destroy(instance, 1.5f);
+                Destroy(instance, 0.5f);
                 timeBetweenSpawns = startTimeBetweenSpawns;
             }
 

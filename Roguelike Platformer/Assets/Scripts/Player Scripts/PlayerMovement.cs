@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public int maxJumpCount;
+    public bool isMoving = false;
 
     [Header("Dash")]
     public bool canDash = true;
@@ -133,11 +134,13 @@ public class PlayerMovement : MonoBehaviour
         if(rb.velocity.x == 0 && !pausemenuscript.isPaused && !deathscenescript.isDead)
         {
             animator.SetFloat("Speed", 0); //idle animation
+            isMoving = false;
         }
 
-        else if(rb.velocity.x != 0 && !pausemenuscript.isPaused)
+        else if(rb.velocity.x != 0 && !pausemenuscript.isPaused && !playercollision.againstWall)
         {
             animator.SetFloat("Speed", 1); //run animation
+            isMoving = true;
         }
 
         //jumping
