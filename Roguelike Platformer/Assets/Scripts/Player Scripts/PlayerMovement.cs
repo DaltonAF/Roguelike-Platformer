@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Dash")]
     public bool canDash = true;
-    private bool isDashing;
+    public bool isDashing;
     public float dashingPower = 16f;
     public float dashingTime = 0.12f;
     public float dashingCooldown = 1f;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundObjects;
 
     private Rigidbody2D rb;
-    private bool facingRight = true;
+    public bool facingRight = true;
     private bool isJumping = false;
     private int jumpCount;
     private float maxYvelocity;
