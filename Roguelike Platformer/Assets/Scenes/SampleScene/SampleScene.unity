@@ -1112,6 +1112,7 @@ MonoBehaviour:
   groundObjects:
     serializedVersion: 2
     m_Bits: 256
+  facingRight: 1
   animator: {fileID: 398925716}
   playerhealth: {fileID: 398925717}
   playercollision: {fileID: 398925719}
@@ -1330,8 +1331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenSpawns: 0
-  startTimeBetweenSpawns: 0.05
+  startTimeBetweenSpawns: 0.03
   echo: {fileID: 2653225521021265082, guid: 7e97c7685871a4b4db95e47908bdb2ce, type: 3}
+  playermovement: {fileID: 398925715}
 --- !u!1 &422725334
 GameObject:
   m_ObjectHideFlags: 0
