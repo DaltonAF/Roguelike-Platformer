@@ -57,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     public DeathSceneScript deathscenescript;
 
+    public Transform playerspawn;
+
 
 
     private void Start()
@@ -162,6 +164,10 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = playerspawn.position;
+        }
     }
 
     private void AnimateFlip()

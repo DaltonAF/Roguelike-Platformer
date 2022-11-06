@@ -397,7 +397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.9535, y: -31.9701}
+  m_AnchoredPosition: {x: -24.187, y: -31.979}
   m_SizeDelta: {x: 0.906, y: 0.8647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142574619
@@ -678,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.76, y: -5.84}
+  m_AnchoredPosition: {x: -4.49, y: -5.84}
   m_SizeDelta: {x: 2.6938, y: 0.4475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302115076
@@ -1100,6 +1100,7 @@ MonoBehaviour:
   moveSpeed: 4
   jumpForce: 6
   maxJumpCount: 1
+  isMoving: 0
   canDash: 1
   isDashing: 0
   dashingPower: 16
@@ -1119,6 +1120,7 @@ MonoBehaviour:
   groundcheck: {fileID: 398925720}
   pausemenuscript: {fileID: 2060887712}
   deathscenescript: {fileID: 1999286637}
+  playerspawn: {fileID: 1583242226}
 --- !u!95 &398925716
 Animator:
   serializedVersion: 4
@@ -1172,8 +1174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyscript: {fileID: 145641843}
   playerhealth: {fileID: 398925717}
+  playermovement: {fileID: 0}
   player: {fileID: 398925710}
   enemy: {fileID: 6421167175779559249, guid: e4f91ede8b050204b9472ad0429aa519, type: 3}
+  animator: {fileID: 0}
+  againstWall: 0
 --- !u!114 &398925720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2067,8 +2072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 64.1523, y: -18.6675}
-  m_SizeDelta: {x: 1101.3481, y: 582.0289}
+  m_AnchoredPosition: {x: 62.7207, y: -21.5309}
+  m_SizeDelta: {x: 1963.2319, y: 1126.075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726497939
 MonoBehaviour:
@@ -4058,6 +4063,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 890077386}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1583242225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583242226}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583242226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583242225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: -3.84, z: -7.6671634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1609354769
 GameObject:
