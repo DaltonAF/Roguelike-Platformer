@@ -8,7 +8,7 @@ public class DeathSceneScript : MonoBehaviour
 
     public PlayerHealth playerhealth;
     public GameObject DeathScreen;
-    public bool isDead = false;
+    public static bool isDead = false;
 
     void Start()
     {
@@ -36,6 +36,8 @@ public class DeathSceneScript : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
         isDead = false;
+        Debug.Log(PauseMenuScript.isPaused);
+        Debug.Log(isDead);
     }
 
     public void QuitGame()

@@ -8,8 +8,6 @@ public class MusicPlayer : MonoBehaviour
     public AudioSource _AudioSource1;
     public AudioSource _AudioSource2;
 
-    public PauseMenuScript pausemenuscript;
-    public DeathSceneScript deathscenescript;
 
     void Start()
     {
@@ -18,7 +16,7 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        if(deathscenescript.isDead)
+        if(DeathSceneScript.isDead)
         {
             if(_AudioSource1.isPlaying)
             {

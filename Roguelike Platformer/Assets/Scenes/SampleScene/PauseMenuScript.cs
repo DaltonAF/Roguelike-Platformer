@@ -7,7 +7,7 @@ public class PauseMenuScript : MonoBehaviour
 {
 
     public GameObject PauseMenu;
-    public bool isPaused = false;
+    public static bool isPaused = false;
 
     public MusicPlayer musicplayer;
 
