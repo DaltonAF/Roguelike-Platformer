@@ -36,8 +36,7 @@ public class DeathSceneScript : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
         isDead = false;
-        Debug.Log(PauseMenuScript.isPaused);
-        Debug.Log(isDead);
+        playerhealth.currentPlayerHealth = playerhealth.maxPlayerHealth;
     }
 
     public void QuitGame()
