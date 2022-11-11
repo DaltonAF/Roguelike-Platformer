@@ -7,6 +7,7 @@ public class PauseMenuScript : MonoBehaviour
 {
 
     public GameObject PauseMenu;
+    public GameObject OptionsMenu;
     public static bool isPaused = false;
 
     public MusicPlayer musicplayer;
@@ -14,6 +15,7 @@ public class PauseMenuScript : MonoBehaviour
     void Start()
     {
         PauseMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
     }
 
     void Update()
@@ -23,7 +25,16 @@ public class PauseMenuScript : MonoBehaviour
 
             if(isPaused)
             {
-                resumeGame();
+                if(!OptionsMenu.activeInHierarchy)
+                {
+                    resumeGame();
+                }
+                else
+                {
+                    OptionsMenu.SetActive(false);
+                    PauseMenu.SetActive(true);
+                }
+
             } 
             else 
             {
@@ -58,6 +69,7 @@ public class PauseMenuScript : MonoBehaviour
     public void goToMainMenu()
     {
         SceneManager.LoadScene("MenuScene");
+        isPaused = false;
     }
     
     public void QuitGame()
