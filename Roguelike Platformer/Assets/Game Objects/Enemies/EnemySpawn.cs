@@ -25,12 +25,14 @@ public class EnemySpawn : MonoBehaviour
 
     public void SpawnObject()
     {
+        #if UNITY_EDITOR
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
         
         Selection.activeObject = PrefabUtility.InstantiatePrefab(prefabObject, transform);
         var tempPrefab = Selection.activeGameObject;
         tempPrefab.transform.position = spawnPoints[randSpawnPoint].position;
         tempPrefab.transform.rotation = transform.rotation;
+        #endif
     }
 
 }
