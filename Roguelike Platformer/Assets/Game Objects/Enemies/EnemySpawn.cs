@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,11 +23,6 @@ public class EnemySpawn : MonoBehaviour
         InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
     }
 
-    void Update()
-    {
-            
-    }
-
     public void SpawnObject()
     {
         int randSpawnPoint = Random.Range(0, spawnPoints.Length);
@@ -37,3 +34,4 @@ public class EnemySpawn : MonoBehaviour
     }
 
 }
+#endif
