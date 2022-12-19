@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     public int maxHealth = 20;
     private int currentHealth;
-    public bool isDead;
+    public bool isDead = false;
 
     public Animator animator;
 
@@ -17,14 +17,17 @@ public class EnemyScript : MonoBehaviour
 
     public void EnemyTakeDamage(int damage)
     {
-        currentHealth -= damage;
-
-        //play hurt animation
-        animator.SetTrigger("Hurt");
-
-        if(currentHealth <= 0)
+        if (!isDead)
         {
-            Die();
+            currentHealth -= damage;
+
+            //play hurt animation
+            animator.SetTrigger("Hurt");
+
+            if(currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -33,12 +36,12 @@ public class EnemyScript : MonoBehaviour
         Physics2D.IgnoreLayerCollision(10, 11, true);
         animator.SetBool("IsDead", true);
        
+        isDead = true;
         FunctionTimer.Create(Kill, 0.9f);
     }
 
     public void Kill()
     {
-        isDead = true;
         Physics2D.IgnoreLayerCollision(10, 11, false);
         Destroy(gameObject);
     }
