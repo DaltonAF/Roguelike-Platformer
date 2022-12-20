@@ -1263,7 +1263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -4.52, y: -5.84}
+  m_AnchoredPosition: {x: -4.5200195, y: -5.8399963}
   m_SizeDelta: {x: 2.6938, y: 0.4475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302115076
@@ -1998,7 +1998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &497026660
 Animator:
   serializedVersion: 4
@@ -2297,6 +2297,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1119370475}
+  - {fileID: 1962548508}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4415,7 +4416,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1554263212}
-  - {fileID: 1962548508}
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5985,7 +5985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0035095215, y: -0.014299}
+  m_AnchoredPosition: {x: 0.0035095215, y: -0.014299005}
   m_SizeDelta: {x: -0.0767, y: -0.061299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742987176
@@ -6421,7 +6421,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 519420031}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -6429,7 +6429,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: -285703165
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1962548508
@@ -6446,7 +6446,7 @@ RectTransform:
   m_Children:
   - {fileID: 302115075}
   - {fileID: 142574618}
-  m_Father: {fileID: 1119370475}
+  m_Father: {fileID: 519420032}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
